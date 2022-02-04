@@ -1,0 +1,42 @@
+{% extends 'investimentos/base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+  Formulário de investimento
+{% endblock %}
+
+{% block conteudo %}
+
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.nome_investimento.errors }}
+      <label>Nome: </label> {{ form.nome_investimento | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.valor.errors }}
+      <label>Valor: </label> {{ form.valor | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.fonte.errors }}
+      <label>Fonte: </label> {{ form.fonte | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.data.errors }}
+      <label>Data: </label> {{ form.data | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.lucro_mensal.errors }}
+      <label>Lucro mensal: </label> {{ form.lucro_mensal | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      {{ form.lucro_anual.errors }}
+      <label>Lucro anual: </label> {{ form.lucro_anual | addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary" type="submit" value="Cadastrar">   
+      <a class="btn btn-secondary" href="{% url 'listar_investimentos' %}">Voltar</a>
+    </div> 
+  </form>  
+{% endblock %}
